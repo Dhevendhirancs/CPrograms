@@ -1,26 +1,43 @@
+/**************************************************
+	C PROGRAM TO EXPAND STRING
+	SAMPLE INPUT: A1B2C3
+	      OUTPUT: ABBCCC
+
+	      AUTHOR: DHEVENDHIRAN M
+	      DATE: 18.01.2018
+***************************************************/
 #include<stdio.h>
 #include<conio.h>
 #include<string.h>
-int main(){
-	 char exp[50],ans[100];
-	 int i=0,k=0,j,temp,len;
-	 clrscr();
-	 printf("\nEnter the expression:");
-	 gets(exp);
-	 len=strlen(exp);
-	 while(i<len){
+char exp[30],ans[30],i=0,j=0,k=0,len=0,temp;
+void getInput();
+void getExpand();
+void printOutput();
+void main(){
+	clrscr();
+	getInput();
+	getExpand();
+	printOutput();
+	getch();
+}
+void getInput(){
+	printf("\nEnter the expression:");
+	gets(exp);
+}
+void getExpand(){
+	len=strlen(exp);
+	while(i<len){
 		temp=exp[i+1]-48;
-		//printf("\n%d",temp);
-		//i=i+2;
-		for(j=0;j<temp;j++){
+		while(j<temp){
 			ans[k]=exp[i];
 			k++;
+			j++;
 		}
-		i=i+2;
-	 }
-	 ans[k]='\0';
-	 printf("\n");
-	 printf("%s",ans);
-	 getch();
-	 return 0;
+		j=0;
+		i+=2;
+	}
+	ans[k]='\0';
+}
+void printOutput(){
+	puts(ans);
 }
